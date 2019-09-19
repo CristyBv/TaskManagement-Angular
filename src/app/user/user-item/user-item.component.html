@@ -1,0 +1,27 @@
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="user-id">Id</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="user-id" [value]="user.id" disabled #userId>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="user-username">Username</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="user-username" placeholder="Username" [value]="user.username" #userUsername>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="user-firstname">Firstname</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="user-firstname" placeholder="Firstname" [value]="user.firstname" #userFirstname>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="user-lastname">Lastname</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="user-lastname" placeholder="Lastname" [value]="user.lastname" #userLastname>
+    </div>
+</div>
+
+<button class="btn btn-primary pull-right" (click)="onUpdateUser($event)">Save</button>
+<button class="btn btn-danger pull-right" (click)="onDeleteUser($event)">Delete</button>
