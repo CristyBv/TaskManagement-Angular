@@ -17,6 +17,7 @@ export class TaskItemComponent implements OnInit {
   @ViewChild('taskDeadline', {static: false}) deadlineInput:ElementRef;
   @ViewChild('taskPriority', {static: false}) priorityInput:ElementRef;
   @ViewChild('taskStatus', {static: false}) statusInput:ElementRef;
+  @Output() onItemDelete = new EventEmitter<number>();
 
   constructor(private taskService: TaskService,
     private location: Location) { }
@@ -32,7 +33,9 @@ export class TaskItemComponent implements OnInit {
 
   onDeleteTask(e) {
     e.preventDefault();
-    this.taskService.delete(this.task.id).subscribe(() => this.goBack());
+    this.taskService.delete(this.task.id).subscribe(() => {
+      this.onItemDelete.emit(this.task.id);
+    });
   }
 
   goBack(): void {

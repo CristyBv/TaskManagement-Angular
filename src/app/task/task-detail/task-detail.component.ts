@@ -8,10 +8,15 @@ import { Task } from '../task.model';
 })
 export class TaskDetailComponent implements OnInit {
 
-  @Input() task: Task;  
+  @Input() task: Task;
+  @Output() onDeleteTask = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDeleteTaskEvent(id: number) {
+    this.onDeleteTask.emit(id);
   }
 }
