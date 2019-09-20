@@ -1,0 +1,45 @@
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-id">Id</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-id" [value]="task.id" disabled #taskId>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-title">Title</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-title" placeholder="Title" [value]="task.title" #taskTitle>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-content">Content</label>
+    <div class="col-sm-10">
+        <textarea type="text" class="form-control" name="task-content" placeholder="Content" [value]="task.content" #taskContent></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-startdate">Startdate</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-startdate" placeholder="startdate" [value]="task.startDate" #taskStartdate>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-deadline">Deadline</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-deadline" placeholder="deadline" [value]="task.deadline" #taskDeadline>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-priority">Priority</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-priority" placeholder="priority" [value]="task.priority" #taskPriority>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="task-status">Status</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" name="task-status" placeholder="status" [value]="task.status" #taskStatus>
+    </div>
+</div>
+
+<button class="btn btn-primary pull-right" (click)="onUpdateTask($event)">Save</button>
+<button class="btn btn-danger pull-right" (click)="onDeleteTask($event)">Delete</button>

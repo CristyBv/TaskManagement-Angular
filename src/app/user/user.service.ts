@@ -18,7 +18,7 @@ export class UserService {
     return this.http.get<User[]>(this.accessPointUrl, {headers: this.headers});
   }
 
-  public update(id: Int16Array, user: User) {
+  public update(id: number, user: User) {
     const url = `${this.accessPointUrl}/${id}`;
     return this.http.put(url, user, {headers: this.headers});
   }
@@ -28,7 +28,7 @@ export class UserService {
     return this.http.post(url, user, {headers: this.headers});
   }
 
-  public delete(id: Int16Array) {
+  public delete(id: number) {
     const url = `${this.accessPointUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers});
   }

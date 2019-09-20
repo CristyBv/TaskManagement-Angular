@@ -1,0 +1,41 @@
+<div class="form-group">
+    <input type="text" placeholder="Title" class="form-control" #addTaskTitle>
+    <textarea class="form-control" placeholder="Content" #addTaskContent></textarea>
+    <input type="text" placeholder="StartDate" class="form-control" #addTaskStartdate>
+    <input type="text" placeholder="Deadline" class="form-control" #addTaskDeadline>
+    <input type="number" placeholder="Priority" class="form-control" #addTaskPriority>
+    <input type="text" placeholder="Status" class="form-control" #addTaskStatus>
+    
+</div>
+<button class="btn btn-primary pull-left" (click)="onAddTask()">Add</button>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">StartDate</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks" (click)="onTaskSelected(task)">
+        <th scope="row">{{ task.id }}</th>
+        <td>{{ task.title }}</td>
+        <td>{{ task.content }}</td>
+        <td>{{ task.startDate }}</td>
+        <td>{{ task.deadline }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<app-task-detail *ngIf="selectedTask; else noTaskSelected" [task]="selectedTask" (onDeleteItem)="deleteItem($event)"></app-task-detail>
+<ng-template $noTaskSelected>
+    <p>No Task selected!</p>
+</ng-template>
+  

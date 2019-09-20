@@ -1,5 +1,5 @@
 export class User {
-    public id: Int16Array;
+    public id: number;
     public password: string;
     public username: string;
     public firstname: string;

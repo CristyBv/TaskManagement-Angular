@@ -11,6 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user/user.service';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserItemComponent } from './user/user-item/user-item.component';
+import { TaskComponent } from './task/task.component';
+import { TaskDetailComponent } from './Task/task-detail/task-detail.component';
+import { TaskItemComponent } from './Task/task-item/task-item.component';
+import { TaskService } from './task/task.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,9 @@ import { UserItemComponent } from './user/user-item/user-item.component';
     UserComponent,
     UserDetailComponent,
     UserItemComponent,
+    TaskComponent,
+    TaskDetailComponent,
+    TaskItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import { UserItemComponent } from './user/user-item/user-item.component';
     HttpClientModule
   ],
   providers: [
-    UserService
+    UserService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })
