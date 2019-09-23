@@ -10,6 +10,7 @@ export class TaskDetailComponent implements OnInit {
 
   @Input() task: Task;
   @Output() onDeleteTask = new EventEmitter<number>();
+  @Output() onUpdateTask = new EventEmitter<Task>();
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class TaskDetailComponent implements OnInit {
 
   onDeleteTaskEvent(id: number) {
     this.onDeleteTask.emit(id);
+  }
+
+  onUpdateTaskEvent(task: Task) {
+    this.onUpdateTask.emit(task);
   }
 }

@@ -1,34 +1,48 @@
-<div class="form-group">
-    <input type="text" placeholder="Username" class="form-control" #addUserUsername>
-    <input type="password" placeholder="Password" class="form-control" #addUserPassword>
-    <input type="text" placeholder="Firstname" class="form-control" #addUserFirstname>
-    <input type="text" placeholder="Lastname" class="form-control" #addUserLastname>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <input type="text" placeholder="Username" class="form-control" [(ngModel)]="loginUsername">
+      <input type="password" placeholder="Password" class="form-control" [(ngModel)]="loginPassword">
+    </div>
+    <button class="btn btn-success pull-left" (click)="onAuthUser()">LogIn</button>
+    <button class="btn btn-secondary pull-right" (click)="onLogOutUser()">LogOut</button>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <input type="text" placeholder="Username" class="form-control" #addUserUsername>
+      <input type="password" placeholder="Password" class="form-control" #addUserPassword>
+      <input type="text" placeholder="Firstname" class="form-control" #addUserFirstname>
+      <input type="text" placeholder="Lastname" class="form-control" #addUserLastname>
+    </div>
+    <button class="btn btn-primary pull-left" (click)="onAddUser()">Register</button>
+  </div>
 </div>
-<button class="btn btn-primary pull-left" (click)="onAddUser()">Add</button>
+
+<div class="alert-danger">{{errorMessage}}</div>
 
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Username</th>
-        <th scope="col">Firstname</th>
-        <th scope="col">Lastname</th>
-        <th scope="col">Team</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users" (click)="onUserSelected(user)">
-        <th scope="row">{{ user.id }}</th>
-        <td>{{ user.username }}</td>
-        <td>{{ user.firstname }}</td>
-        <td>{{ user.lastname }}</td>
-        <td>{{ user.team }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Username</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users" (click)="onUserSelected(user)">
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.team }}</td>
+    </tr>
+  </tbody>
+</table>
 
-<app-user-detail *ngIf="selectedUser; else noUserSelected" [user]="selectedUser"></app-user-detail>
+<app-user-detail *ngIf="selectedUser; else noUserSelected" [user]="selectedUser"
+  (onUpdateUserItem)="onUpdateItem($event)" (onDeleteUserItem)="onDeleteItem($event)"></app-user-detail>
 <ng-template $noUserSelected>
-    <p>No user selected!</p>
+  <p>No user selected!</p>
 </ng-template>
-  

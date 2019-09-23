@@ -18,6 +18,7 @@ export class TaskItemComponent implements OnInit {
   @ViewChild('taskPriority', {static: false}) priorityInput:ElementRef;
   @ViewChild('taskStatus', {static: false}) statusInput:ElementRef;
   @Output() onItemDelete = new EventEmitter<number>();
+  @Output() onItemUpdate = new EventEmitter<Task>();
 
   constructor(private taskService: TaskService,
     private location: Location) { }
@@ -28,7 +29,14 @@ export class TaskItemComponent implements OnInit {
   onUpdateTask(e) {
     e.preventDefault();
     this.task.title = this.titleInput.nativeElement.value;
-    this.taskService.update(this.task.id, this.task).subscribe(() => this.goBack());
+    this.task.content = this.contentInput.nativeElement.value;
+    this.task.startDate = this.startdateInput.nativeElement.value;
+    this.task.deadline = this.deadlineInput.nativeElement.value;
+    this.task.priority = this.priorityInput.nativeElement.value;
+    this.task.status = this.statusInput.nativeElement.value;
+    this.taskService.update(this.task.id, this.task).subscribe(() => {
+      this.onItemUpdate.emit(this.task);
+    });
   }
 
   onDeleteTask(e) {

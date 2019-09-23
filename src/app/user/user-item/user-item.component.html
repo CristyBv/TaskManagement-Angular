@@ -22,6 +22,7 @@
         <input type="text" class="form-control" name="user-lastname" placeholder="Lastname" [value]="user.lastname" #userLastname>
     </div>
 </div>
+<div class="alert-danger pull-left">{{errorMessage}}</div>
 
 <button class="btn btn-primary pull-right" (click)="onUpdateUser($event)">Save</button>
 <button class="btn btn-danger pull-right" (click)="onDeleteUser($event)">Delete</button>

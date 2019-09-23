@@ -1,6 +1,6 @@
 <form class="form-horizontal" role="form">
     <fieldset>
         <legend>{{ task.title }}</legend>
-        <app-task-item [task]="task" (onItemDelete)="onDeleteTaskEvent($event)"></app-task-item>
+        <app-task-item [task]="task" (onItemDelete)="onDeleteTaskEvent($event)" (onItemUpdate)="onUpdateTaskEvent($event)"></app-task-item>
     </fieldset>
 </form>

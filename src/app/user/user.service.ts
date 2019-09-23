@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from './user.model';
+import { Auth } from '../auth/auth.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService { 
 
   private headers: HttpHeaders;
   private accessPointUrl: string = 'https://localhost:44373/users';
@@ -31,5 +32,10 @@ export class UserService {
   public delete(id: number) {
     const url = `${this.accessPointUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers});
+  }
+
+  public auth(username: string, password: string) {
+    const url = `${this.accessPointUrl}/authenticate`;
+    return this.http.post(url, new Auth(username, password), {headers: this.headers} )
   }
 }

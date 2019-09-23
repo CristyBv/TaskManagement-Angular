@@ -45,4 +45,9 @@ export class TaskComponent implements OnInit {
   deleteItem(id: number) {
     this.tasks = this.tasks.filter(o => o.id !== id);
   }
+
+  updateItem(task: Task) {
+    let listTask = this.tasks.find(o => o.id === task.id) 
+    listTask = task;
+  }
 }
